@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class RicettaController {
     @GetMapping
     public String index(Model model){
         List<Categoria> categoriaList = categoriaRepository.findAll();
-        List<Ricetta> ricettaList = ricettaRepository.findAll();
+        List<Ricetta> ricettaList = new ArrayList<>(ricettaRepository.findAll());
         //Set personale
         Optional<Ricetta> ricettaToadd = ricettaRepository.findById(1);
         Ricetta ricetta = ricettaToadd.get();

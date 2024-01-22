@@ -8,7 +8,7 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-light">
 <!-- NavBar -->
 <header>
     <nav class="navbar navbar-expand-lg bg-light">
@@ -43,12 +43,14 @@
 
 <main>
 <div class="container">
-    <div class="row justify-content-center card mt-5 mb-3" th:object="${ricetta}">
+    <div class="row justify-content-center card mt-5 mb-3 shadow p-3 mb-5 bg-body rounded" th:object="${ricetta}">
         <h1>Ricetta <span th:text="*{title}"></span></h1>
         <hr>
+        <div class="pb-3 pt-3">
+            <img th:src="*{picture_url}" alt="foto" class="img-fluid w-25">
+        </div>
         <div class="col-md-10" th:text="'Nome Ricetta : ' + *{title}"></div>
         <div class="col-md-10" th:text="'Ingredienti : ' + *{textIngridients}"></div>
-        <div class="col-md-10" th:text="'Foto Ricetta : ' + *{picture_url}"></div>
         <div class="col-md-10" th:text="'Tempo Preparazione : ' + *{timeRecipe}"></div>
         <div class="col-md-10" th:text="'Porzioni : ' + *{numberPortions}"></div>
         <div class="col-md-10" th:text="'Descrizione(Passaggi) : ' + *{textRecipe}"></div>
