@@ -71,7 +71,7 @@ public class RicettaController {
     public String deleteRicetta(@PathVariable int id){
         Optional<Ricetta> ricettaRecovery = ricettaRepository.findById(id);
         Ricetta ricettaDelete = ricettaRecovery.get();
-        ricettaRepository.delete(ricettaDelete);
-        return "ricette/index";
+        ricettaRepository.deleteById(id);
+        return "redirect:/home/ricette";
     }
 }
