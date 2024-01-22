@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Benedetta Rossi:Creazione Ricetta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+</head>
+<body>
+<!-- NavBar -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" th:href="@{/home/ricette}">Ricette</a>
+                    <a class="nav-link" href="#">Categorie</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+<!-- Creazione form -->
+    <div class="container mt-5">
+        <div class="row card">
+            <form th:action="@{/home/ricette/create}" method="post" th:object="${ricetta}" class="row gy-3 justify-content-center">
+
+                <div class="col-md-6 col-12 text-center">
+                    <label for="title" class="form-label">Nome Ricetta</label>
+                    <input id="title" th:field="*{title}" type="text" class="form-control">
+                </div>
+                <div class="col-12 col-md-2 text-center">
+                    <label for="timeRecipe" class="form-label">Tempo</label>
+                    <input id="timeRecipe" th:field="*{timeRecipe}" type="number" class="form-control">
+                </div>
+                <div class="col-12 col-md-2 text-center">
+                    <label for="numberPortions" class="form-label">Porzioni</label>
+                    <input id="numberPortions" th:field="*{numberPortions}" type="number" class="form-control">
+                </div>
+                <div class="col-12 col-md-6 text-center">
+                    <label for="picture_url" class="form-label">Immagine(URL)</label>
+                    <input id="picture_url" th:field="*{picture_url}" type="text" class="form-control">
+                </div>
+                <div class="col-12 col-md-10 text-center">
+                    <label for="textIngridients" class="form-label">Ingredienti Ricetta</label>
+                    <textarea cols="6" rows="3" id="textIngridients" th:field="*{textIngridients}" type class="form-control" placeholder="100gr di pasta,ecc"></textarea>
+                </div>
+                <div class="col-12 col-md-10 text-center">
+                    <label for="textRecipe" class="form-label">Descrizione Ricetta</label>
+                    <textarea cols="6" rows="3" id="textRecipe" th:field="*{textRecipe}" type class="form-control" placeholder="per i primi 10 min fai questo, ecc"></textarea>
+                </div>
+                <div class="col-12 col-md-3 text-center">
+                    <button class="btn btn-primary mb-3" type="submit">Aggiungi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>

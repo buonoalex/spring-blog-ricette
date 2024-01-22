@@ -1,6 +1,9 @@
 package org.lesson.springblogricette.model;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.NotFound;
 
 @Entity
 public class Ricetta {
