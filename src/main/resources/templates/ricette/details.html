@@ -20,7 +20,21 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" th:href="@{/home/ricette}">Ricette</a>
-                    <a class="nav-link" href="#">Categorie</a>
+                    <!-- Dropsown catgorie-->
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorie
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" >
+                                    <li th:each="categoria:${categoriaList}">
+                                        <a class="dropdown-item" th:href="@{/home/categorie/{id}(id=${categoria.id})}" th:text="${categoria.type}"></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,7 +44,7 @@
 <main>
 <div class="container">
     <div class="row justify-content-center card mt-5 mb-3" th:object="${ricetta}">
-        <h1>Ricetta</h1>
+        <h1>Ricetta <span th:text="*{title}"></span></h1>
         <hr>
         <div class="col-md-10" th:text="'Nome Ricetta : ' + *{title}"></div>
         <div class="col-md-10" th:text="'Ingredienti : ' + *{textIngridients}"></div>
@@ -38,6 +52,7 @@
         <div class="col-md-10" th:text="'Tempo Preparazione : ' + *{timeRecipe}"></div>
         <div class="col-md-10" th:text="'Porzioni : ' + *{numberPortions}"></div>
         <div class="col-md-10" th:text="'Descrizione(Passaggi) : ' + *{textRecipe}"></div>
+        <div class="col-md-10" th:text="'Categoria : ' + ${ricetta.getCategory().getType()}"></div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4 text-center">

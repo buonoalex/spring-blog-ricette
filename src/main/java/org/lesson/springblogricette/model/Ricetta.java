@@ -1,9 +1,6 @@
 package org.lesson.springblogricette.model;
-
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.NotFound;
+
 
 @Entity
 public class Ricetta {
@@ -27,6 +24,10 @@ public class Ricetta {
     private int numberPortions;
 
     private String textRecipe;
+
+    //Relazioni
+    @ManyToOne
+    private Categoria category;
 
     //Costruttore
 
@@ -87,5 +88,13 @@ public class Ricetta {
 
     public void setTextRecipe(String textRecipe) {
         this.textRecipe = textRecipe;
+    }
+
+    public Categoria getCategory() {
+        return category;
+    }
+
+    public void setCategory(Categoria category) {
+        this.category = category;
     }
 }

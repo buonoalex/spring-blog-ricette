@@ -20,13 +20,26 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" th:href="@{/home/ricette}">Ricette</a>
-                    <a class="nav-link" href="#">Categorie</a>
+                    <!-- Dropsown catgorie-->
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorie
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" >
+                                    <li th:each="categoria:${categoriaList}">
+                                        <a class="dropdown-item" th:href="@{/home/categorie/{id}(id=${categoria.id})}" th:text="${categoria.type}"></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 </header>
-
 <main>
     <!-- Creazione form -->
     <div class="container mt-5">
@@ -48,6 +61,16 @@
                 <div class="col-12 col-md-6 text-center">
                     <label for="picture_url" class="form-label">Immagine(URL)</label>
                     <input id="picture_url" th:field="*{picture_url}" type="text" class="form-control">
+                </div>
+                <div class="col-12 col-md-6 text-center">
+                    <label for="category" class="from-label pb-2">Inserisci la categoria</label>
+                    <select id="category" class="form-select" aria-label="Categorie" th:field="*{category}">
+                        <option value="1">Antipasto</option>
+                        <option value="2">Contorno</option>
+                        <option value="3">Dessert</option>
+                        <option value="4">Primo piatto</option>
+                        <option value="5">Secondo piatto</option>
+                    </select>
                 </div>
                 <div class="col-12 col-md-10 text-center">
                     <label for="textIngridients" class="form-label">Ingredienti Ricetta</label>

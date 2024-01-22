@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Benedetta Rossi:Home</title>
+    <title>Benedetta Rossi:Categoria View</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -41,10 +41,30 @@
     </nav>
 </header>
 <main>
-<div class="container text-center">
-    <h1>Ciao a tutti mi chiamo Benedetta Rossi</h1>
-    <p>Sono uno chef a 4 stelle</p>
-</div>
+    <div class="container mt-5">
+        <div class="row">
+            <h1>Categoria <span th:text="${categoria.type}"></span></h1>
+            <hr>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Ricetta</th>
+                    <th scope="col">Tempo Preparazione</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ricetta : ${categoria.getRicettaList()}">
+                    <td th:text="${ricetta.title}"></td>
+                    <td th:text="${ricetta.timeRecipe}"></td>
+                    <td>
+                        <a th:href="@{/home/ricette/details/{id}(id=${ricetta.id})}" class="btn btn-primary">Vedi</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
