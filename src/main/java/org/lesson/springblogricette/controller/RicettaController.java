@@ -50,6 +50,23 @@ public class RicettaController {
         }
     }
 
+    @GetMapping("/edit/{id}")
+    public String editRicetta(@PathVariable int id,Model model){
+        Optional<Ricetta> editRecovery = ricettaRepository.findById(id);
+        model.addAttribute("ricetta",editRecovery.get());
+        return "ricette/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String saveEditRicetta(@PathVariable int id,@Validated @ModelAttribute("ricetta")Ricetta editRicetta,Model model,BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "ricette/edit";
+        }else {
+            ricettaRepository.save(editRicetta);
+            return "redirect:/home/ricette/details/" + editRicetta.getId();
+        }
+    }
+
     @PostMapping("/delete/{id}")
     public String deleteRicetta(@PathVariable int id){
         Optional<Ricetta> ricettaRecovery = ricettaRepository.findById(id);
