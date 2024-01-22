@@ -19,7 +19,7 @@ public class Ricetta {
     private String picture_url;
 
     @Column(nullable = false)
-    private int time;
+    private int timeRecipe;
 
     private int numberPortions;
 
@@ -62,12 +62,12 @@ public class Ricetta {
         this.picture_url = picture_url;
     }
 
-    public int getTime() {
-        return time;
+    public int getTimeRecipe() {
+        return timeRecipe;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setTimeRecipe(int time) {
+        this.timeRecipe = time;
     }
 
     public int getNumberPortions() {
